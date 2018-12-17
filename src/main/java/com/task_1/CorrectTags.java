@@ -35,12 +35,14 @@ public class CorrectTags {
                     result = false;
                     break;
                 } else {
+
                     int ascii = (int) symbol;
 
-                    if (symbol != ')')
+                    if (symbol != ')') {
                         ascii = ascii - 2;
-                    else
-                        ascii = ascii-1;
+                    } else {
+                        ascii = ascii - 1;
+                    }
 
                     Character expectedOpenTag = (char) ascii;
                     if (!stack.pop().equals(expectedOpenTag)) {
@@ -52,8 +54,9 @@ public class CorrectTags {
             }
         }
 
-        if (!stack.empty())
+        if (!stack.empty()) {
             result = false;
+        }
 
         return result;
 
