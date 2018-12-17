@@ -1,36 +1,61 @@
 package com.task_1;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 
 public class CorrectTags {
-    private final static String[] openTags = {"{", "[", "("};
-    private final static String[] closeTags = {"}", "]", ")"};
 
-    public static boolean checkExpression(String expression){
-        Stack<String> stack = new Stack<String>();
-        String[] symbols = expression.split("");
+    private Set<Character> openTags;
+    private Set<Character> closeTags;
+
+    public CorrectTags() {
+        openTags = new HashSet<Character>();
+        closeTags = new HashSet<Character>();
+
+        openTags.add('{');
+        openTags.add('[');
+        openTags.add('(');
+
+        closeTags.add('}');
+        closeTags.add(']');
+        closeTags.add(')');
+    }
+
+    public boolean checkExpression(String expression) {
+        Stack stack = new Stack<String>();
+        char[] symbols = expression.toCharArray();
         boolean result = true;
 
-        for (int i = 0; i < symbols.length; i++) {
-            for (int j = 0; j < openTags.length; j++) {
-                if (openTags[j].equals(symbols[i])) {
-                    stack.push(openTags[j]);
+        for (char symbol : symbols) {
+            if (openTags.contains(symbol)) {
+                stack.add(symbol);
+            } else if (closeTags.contains(symbol)) {
+                if (stack.empty()) {
+                    result = false;
                     break;
-                } else if (closeTags[j].equals(symbols[i])) {
-                    String pop = stack.pop();
-                    if (!pop.equals(openTags[j])) {
+                } else {
+                    int ascii = (int) symbol;
+
+                    if (symbol != ')')
+                        ascii = ascii - 2;
+                    else
+                        ascii = ascii-1;
+
+                    Character expectedOpenTag = (char) ascii;
+                    if (!stack.pop().equals(expectedOpenTag)) {
                         result = false;
+                        break;
                     }
-                    break;
                 }
+
             }
-            if (!result)
-                break;
         }
 
         if (!stack.empty())
             result = false;
 
         return result;
+
     }
 }

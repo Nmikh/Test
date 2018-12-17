@@ -1,0 +1,4 @@
+2018-12-17 17:40:54 INFO  Student:13 - This is info message
+2018-12-17 17:40:54 WARN  Student:15 - This is warn message
+2018-12-17 17:40:54 FATAL Student:17 - This is fatal message
+2018-12-17 17:40:54 ERROR Student:19 - This is error message
