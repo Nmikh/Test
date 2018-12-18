@@ -1,7 +1,6 @@
 package com.task_3;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.NoSuchElementException;
@@ -11,6 +10,7 @@ public class CustomQueueTest {
     @Test
     public void addTest() {
         CustomQueue customQueue = new CustomQueue();
+
         customQueue.add(1);
         customQueue.add(2);
         customQueue.add(3);
@@ -23,6 +23,7 @@ public class CustomQueueTest {
     @Test
     public void correctPeekTest() {
         CustomQueue customQueue = new CustomQueue();
+
         customQueue.add(1);
         customQueue.add(2);
         customQueue.add(3);
@@ -35,12 +36,14 @@ public class CustomQueueTest {
     @Test
     public void emptyPeekTest() {
         CustomQueue customQueue = new CustomQueue();
+
         Assert.assertNull(customQueue.peek());
     }
 
     @Test
     public void correctElementTest() {
         CustomQueue customQueue = new CustomQueue();
+
         customQueue.add(1);
         customQueue.add(2);
         customQueue.add(3);
@@ -53,6 +56,7 @@ public class CustomQueueTest {
     @Test(expected = NoSuchElementException.class)
     public void emptyElementTest() {
         CustomQueue customQueue = new CustomQueue();
+
         customQueue.element();
     }
 
@@ -60,6 +64,7 @@ public class CustomQueueTest {
     @Test
     public void correctPollTest() {
         CustomQueue customQueue = new CustomQueue();
+
         customQueue.add(1);
         customQueue.add(2);
         customQueue.add(3);
@@ -72,12 +77,14 @@ public class CustomQueueTest {
     @Test
     public void emptyPollTest() {
         CustomQueue customQueue = new CustomQueue();
+
         Assert.assertNull(customQueue.poll());
     }
 
     @Test
     public void correctRemoveTest() {
         CustomQueue customQueue = new CustomQueue();
+
         customQueue.add(1);
         customQueue.add(2);
         customQueue.add(3);
@@ -90,6 +97,7 @@ public class CustomQueueTest {
     @Test(expected = NoSuchElementException.class)
     public void emptyRemoveTest() {
         CustomQueue customQueue = new CustomQueue();
+
         customQueue.remove();
     }
 

@@ -27,8 +27,8 @@ public class CustomQueue {
         if (stack2.empty()) {
             this.flipStack(this.stack1, this.stack2);
         }
-        Object objReturn = stack2.peek();
 
+        Object objReturn = stack2.peek();
         return objReturn;
     }
 
@@ -40,8 +40,8 @@ public class CustomQueue {
         if (stack2.empty()) {
             this.flipStack(this.stack1, this.stack2);
         }
-        Object objReturn = stack2.peek();
 
+        Object objReturn = stack2.peek();
         return objReturn;
     }
 
@@ -53,8 +53,8 @@ public class CustomQueue {
         if (stack2.empty()) {
             this.flipStack(this.stack1, this.stack2);
         }
-        Object objReturn = stack2.pop();
 
+        Object objReturn = stack2.pop();
         return objReturn;
     }
 
@@ -66,8 +66,8 @@ public class CustomQueue {
         if (stack2.empty()) {
             this.flipStack(this.stack1, this.stack2);
         }
-        Object objReturn = stack2.pop();
 
+        Object objReturn = stack2.pop();
         return objReturn;
     }
 

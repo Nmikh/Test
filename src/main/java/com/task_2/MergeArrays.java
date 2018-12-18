@@ -6,22 +6,26 @@ public class MergeArrays {
         int r[] = new int[a1.length + a2.length];
         int a1Iterator = 0;
         int a2Iterator = 0;
+        boolean a1Turn;
 
         for (int i = 0; i < r.length; i++) {
-            boolean a1Turn = false;
+            a1Turn = false;
+
             if (a1.length > a1Iterator) {
-                if ((a2.length > a2Iterator && a1[a1Iterator] <= a2[a2Iterator])
+                if (((a2.length > a2Iterator) && (a1[a1Iterator] <= a2[a2Iterator]))
                         || (a2.length <= a2Iterator)) {
                     r[i] = a1[a1Iterator];
                     a1Iterator++;
                     a1Turn = true;
                 }
             }
+
             if (!a1Turn) {
                 r[i] = a2[a2Iterator];
                 a2Iterator++;
             }
         }
+
         return r;
     }
 }

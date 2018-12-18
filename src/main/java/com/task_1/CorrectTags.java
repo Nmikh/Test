@@ -5,7 +5,6 @@ import java.util.Set;
 import java.util.Stack;
 
 public class CorrectTags {
-
     private Set<Character> openTags;
     private Set<Character> closeTags;
 
@@ -22,6 +21,7 @@ public class CorrectTags {
         closeTags.add(')');
     }
 
+
     public boolean checkExpression(String expression) {
         Stack stack = new Stack<String>();
         char[] symbols = expression.toCharArray();
@@ -31,11 +31,11 @@ public class CorrectTags {
             if (openTags.contains(symbol)) {
                 stack.add(symbol);
             } else if (closeTags.contains(symbol)) {
+
                 if (stack.empty()) {
                     result = false;
                     break;
                 } else {
-
                     int ascii = (int) symbol;
 
                     if (symbol != ')') {
@@ -45,12 +45,12 @@ public class CorrectTags {
                     }
 
                     Character expectedOpenTag = (char) ascii;
+
                     if (!stack.pop().equals(expectedOpenTag)) {
                         result = false;
                         break;
                     }
                 }
-
             }
         }
 
@@ -59,6 +59,5 @@ public class CorrectTags {
         }
 
         return result;
-
     }
 }
