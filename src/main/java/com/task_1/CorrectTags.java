@@ -21,7 +21,6 @@ public class CorrectTags {
         closeTags.add(')');
     }
 
-
     public boolean checkExpression(String expression) {
         Stack stack = new Stack<String>();
         char[] symbols = expression.toCharArray();
