@@ -13,9 +13,6 @@ public class CustomQueue {
     }
 
     public void add(Object obj) {
-        if (stack1.empty()) {
-            this.flipStack(this.stack2, this.stack1);
-        }
         stack1.add(obj);
     }
 

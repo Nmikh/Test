@@ -1,62 +1,50 @@
 package com.task_1;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 public class CorrectTags {
     private Set<Character> openTags;
-    private Set<Character> closeTags;
+    private Map<Character, Character> closeTags;
 
     public CorrectTags() {
         openTags = new HashSet<Character>();
-        closeTags = new HashSet<Character>();
+        closeTags = new HashMap<Character, Character>();
 
         openTags.add('{');
         openTags.add('[');
         openTags.add('(');
 
-        closeTags.add('}');
-        closeTags.add(']');
-        closeTags.add(')');
+        closeTags.put('}', '{');
+        closeTags.put(']', '[');
+        closeTags.put(')', '(');
     }
 
     public boolean checkExpression(String expression) {
         Stack stack = new Stack<String>();
-        char[] symbols = expression.toCharArray();
-        boolean result = true;
 
-        for (char symbol : symbols) {
-            if (openTags.contains(symbol)) {
-                stack.add(symbol);
-            } else if (closeTags.contains(symbol)) {
+        for (int i = 0; i < expression.length(); i++) {
+            Character character = expression.charAt(i);
+
+            if (openTags.contains(character)) {
+                stack.add(character);
+            } else if (closeTags.containsKey(character)) {
 
                 if (stack.empty()) {
-                    result = false;
-                    break;
+                    return false;
                 } else {
-                    int ascii = (int) symbol;
-
-                    if (symbol != ')') {
-                        ascii = ascii - 2;
-                    } else {
-                        ascii = ascii - 1;
-                    }
-
-                    Character expectedOpenTag = (char) ascii;
+                    Character expectedOpenTag = closeTags.get(character);
 
                     if (!stack.pop().equals(expectedOpenTag)) {
-                        result = false;
-                        break;
+                        return false;
                     }
                 }
             }
         }
 
         if (!stack.empty()) {
-            result = false;
+            return false;
         }
 
-        return result;
+        return true;
     }
 }
